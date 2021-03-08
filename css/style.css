@@ -1,0 +1,467 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  opacity: 1;
+  -webkit-transition: opacity 0.5s linear;
+  transition: opacity 0.5s linear;
+}
+
+.author {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.author a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  font-family: "Marck Script", cursive;
+  padding: 15px;
+}
+
+.container {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-image: url("https://i.ibb.co/DLt3PP0/flowers-374318-1920.jpg");
+  background-image: url("https://i.ibb.co/SNvjtrQ/wood-bg.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+
+.container .paper {
+  position: fixed;
+  top: -100%;
+  left: -100%;
+  max-width: calc(390px - 30px);
+  padding: 0 25px;
+  width: 100%;
+  background: url("https://i.ibb.co/vhmpyBt/paper-body.png");
+  background-position: center center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  min-height: 84px;
+  -webkit-transform: rotate(-20deg);
+          transform: rotate(-20deg);
+  -webkit-transition: top 0.2s linear, left 0.2s linear, -webkit-transform 0.2s ease-out 0.2s;
+  transition: top 0.2s linear, left 0.2s linear, -webkit-transform 0.2s ease-out 0.2s;
+  transition: top 0.2s linear, left 0.2s linear, transform 0.2s ease-out 0.2s;
+  transition: top 0.2s linear, left 0.2s linear, transform 0.2s ease-out 0.2s, -webkit-transform 0.2s ease-out 0.2s;
+  font-family: "Marck Script", cursive;
+}
+
+.container .paper .name {
+  display: block;
+  text-align: center;
+  margin-bottom: 15px;
+  text-decoration: underline;
+  text-transform: capitalize;
+}
+
+.container .paper .paper-top,
+.container .paper .paper-bottom {
+  height: 60px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.container .paper .paper-top {
+  position: absolute;
+  top: -5%;
+  right: -5%;
+  left: -5%;
+  background-image: url("https://i.ibb.co/jvKN51L/paper-top.png");
+}
+
+.container .paper .paper-bottom {
+  position: absolute;
+  bottom: -5%;
+  right: -5%;
+  left: -5%;
+  background-image: url("https://i.ibb.co/3RmcNs5/paper-bottom.png");
+}
+
+.container .paper p {
+  font-size: 26px;
+}
+
+.container .paper.watch {
+  min-height: 500px;
+  max-height: auto;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  padding: 40px 25px;
+  -webkit-transition: padding 0.8s ease-in 1.5s, min-height 0.8s ease-in 1.5s, top 0.5s linear 0.8s, left 0.5s linear 0.8s, -webkit-transform 0.5s ease-out 0.8s;
+  transition: padding 0.8s ease-in 1.5s, min-height 0.8s ease-in 1.5s, top 0.5s linear 0.8s, left 0.5s linear 0.8s, -webkit-transform 0.5s ease-out 0.8s;
+  transition: padding 0.8s ease-in 1.5s, min-height 0.8s ease-in 1.5s, top 0.5s linear 0.8s, left 0.5s linear 0.8s, transform 0.5s ease-out 0.8s;
+  transition: padding 0.8s ease-in 1.5s, min-height 0.8s ease-in 1.5s, top 0.5s linear 0.8s, left 0.5s linear 0.8s, transform 0.5s ease-out 0.8s, -webkit-transform 0.5s ease-out 0.8s;
+}
+
+.container .paper .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container .paper #message {
+  position: relative;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.container .letter-wrapper {
+  position: absolute;
+  background-image: url("https://i.ibb.co/GQnx18W/old-paper.jpg");
+  background-size: cover;
+  display: block;
+  max-width: 350px;
+  width: calc(100% - 30px);
+  top: 20%;
+  left: 70%;
+  -webkit-transform: translate(-20%, -70%) rotate(20deg);
+          transform: translate(-20%, -70%) rotate(20deg);
+  -webkit-box-shadow: 0 0 50px black;
+          box-shadow: 0 0 50px black;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.container .letter-wrapper.clicked {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) rotate(0deg);
+          transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.container .letter-wrapper.clicked .stamp {
+  width: 0px;
+  height: 0px;
+  opacity: 0;
+  z-index: 0;
+  -webkit-transition: width 0.2s linear 0.3s, height 0.2s linear 0.3s, opacity 0.2s linear 0.3s, z-index 0.2s linear 0.5s;
+  transition: width 0.2s linear 0.3s, height 0.2s linear 0.3s, opacity 0.2s linear 0.3s, z-index 0.2s linear 0.5s;
+}
+
+.container .letter-wrapper.submitted {
+  top: -100%;
+  left: 100%;
+  -webkit-transform: rotate(20deg);
+          transform: rotate(20deg);
+  -webkit-transition: top 1.8s ease-in-out 0.8s, left 1.2s ease-in-out 0.8s, -webkit-transform 0.5s ease-in-out 0.5s;
+  transition: top 1.8s ease-in-out 0.8s, left 1.2s ease-in-out 0.8s, -webkit-transform 0.5s ease-in-out 0.5s;
+  transition: top 1.8s ease-in-out 0.8s, left 1.2s ease-in-out 0.8s, transform 0.5s ease-in-out 0.5s;
+  transition: top 1.8s ease-in-out 0.8s, left 1.2s ease-in-out 0.8s, transform 0.5s ease-in-out 0.5s, -webkit-transform 0.5s ease-in-out 0.5s;
+}
+
+.container .letter-wrapper .ask-name {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  text-align: center;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 4;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+
+.container .letter-wrapper .ask-name p {
+  font-family: "Marck Script", cursive;
+  font-size: 30px;
+  -webkit-user-select: text;
+     -moz-user-select: text;
+      -ms-user-select: text;
+          user-select: text;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.container .letter-wrapper .ask-name input {
+  display: block;
+  background-color: transparent;
+  border: none;
+  margin-right: auto;
+  margin-left: auto;
+  border-bottom: 2px solid brown;
+  outline: none;
+  font-family: "Marck Script", cursive;
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.container .letter-wrapper .ask-name input:invalid {
+  -webkit-box-shadow: 0 0 5px brown;
+          box-shadow: 0 0 5px brown;
+}
+
+.container .letter-wrapper .ask-name .submit-name {
+  font-family: "Marck Script", cursive;
+  font-size: 20px;
+  font-weight: bold;
+  color: #7c2020;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  display: none;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container .letter-wrapper .stamp {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 100px;
+  height: 100px;
+  background-image: url("https://i.ibb.co/8sRJpQ3/mark.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 100%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -100%);
+          transform: translate(-50%, -100%);
+  z-index: 10;
+}
+
+.container .letter-wrapper .letter-closure {
+  position: absolute;
+  top: 0;
+  height: 150px;
+  width: 100%;
+  background: url("https://i.ibb.co/GQnx18W/old-paper.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 5;
+  -webkit-clip-path: polygon(0 0, 100% 0%, 100% 40%, 50% 100%, 0 40%);
+          clip-path: polygon(0 0, 100% 0%, 100% 40%, 50% 100%, 0 40%);
+  -webkit-transition: -webkit-transform 0.2s linear 0.5s;
+  transition: -webkit-transform 0.2s linear 0.5s;
+  transition: transform 0.2s linear 0.5s;
+  transition: transform 0.2s linear 0.5s, -webkit-transform 0.2s linear 0.5s;
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  cursor: pointer;
+}
+
+.container .letter-wrapper .letter-closure:hover:before {
+  -webkit-animation: hintRed 0.5s linear infinite both;
+          animation: hintRed 0.5s linear infinite both;
+}
+
+.container .letter-wrapper .letter-closure:before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  opacity: 0.15;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+  -webkit-animation: hintRed 0.5s linear 1.5s 2 both;
+          animation: hintRed 0.5s linear 1.5s 2 both;
+}
+
+.container .letter-wrapper .letter-closure.opened {
+  -webkit-transition: -webkit-transform 0.2s linear 0.2s;
+  transition: -webkit-transform 0.2s linear 0.2s;
+  transition: transform 0.2s linear 0.2s;
+  transition: transform 0.2s linear 0.2s, -webkit-transform 0.2s linear 0.2s;
+  -webkit-transform: translateY(0px) rotateX(180deg);
+          transform: translateY(0px) rotateX(180deg);
+}
+
+.container .letter-wrapper .letter-closure.opened + .ask-name {
+  pointer-events: initial;
+  opacity: 1;
+  -webkit-user-select: default;
+     -moz-user-select: default;
+      -ms-user-select: default;
+          user-select: default;
+  -webkit-transition: opacity 0.3s linear 0.7s;
+  transition: opacity 0.3s linear 0.7s;
+}
+
+.container .letter-wrapper .letter-body {
+  position: relative;
+  height: 200px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  z-index: 3;
+  -webkit-animation: hintGreen 0.5s linear 2 both;
+          animation: hintGreen 0.5s linear 2 both;
+}
+
+.container .letter-wrapper .letter-body .left-side {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  width: 50%;
+  background: url("https://i.ibb.co/GQnx18W/old-paper.jpg");
+  background-position: 0 0;
+  -webkit-clip-path: polygon(0 0, 0% 100%, 50% 50%);
+          clip-path: polygon(0 0, 0% 100%, 50% 50%);
+  z-index: 1;
+  -webkit-transition: -webkit-transform 0.2s linear 0.3s;
+  transition: -webkit-transform 0.2s linear 0.3s;
+  transition: transform 0.2s linear 0.3s;
+  transition: transform 0.2s linear 0.3s, -webkit-transform 0.2s linear 0.3s;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.container .letter-wrapper .letter-body .left-side:before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  -webkit-animation: hintGreen 0.5s linear 2 both;
+          animation: hintGreen 0.5s linear 2 both;
+}
+
+.container .letter-wrapper .letter-body .left-side.opened {
+  -webkit-transition: -webkit-transform 0.2s linear 0.3s;
+  transition: -webkit-transform 0.2s linear 0.3s;
+  transition: transform 0.2s linear 0.3s;
+  transition: transform 0.2s linear 0.3s, -webkit-transform 0.2s linear 0.3s;
+  -webkit-transform: translateX(0%) rotateY(-180deg);
+          transform: translateX(0%) rotateY(-180deg);
+}
+
+.container .letter-wrapper .letter-body .center {
+  position: absolute;
+  bottom: 0;
+  height: 200px;
+  width: 100%;
+  -webkit-clip-path: polygon(20% 40%, 80% 40%, 100% 100%, 0 100%);
+          clip-path: polygon(20% 40%, 80% 40%, 100% 100%, 0 100%);
+  background: url("https://i.ibb.co/GQnx18W/old-paper.jpg");
+  background-position: center center;
+  z-index: 4;
+  -webkit-transition: -webkit-transform 0.2s linear 0.4s;
+  transition: -webkit-transform 0.2s linear 0.4s;
+  transition: transform 0.2s linear 0.4s;
+  transition: transform 0.2s linear 0.4s, -webkit-transform 0.2s linear 0.4s;
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+}
+
+.container .letter-wrapper .letter-body .center:before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  -webkit-animation: hintGreen 0.5s linear 2 both;
+          animation: hintGreen 0.5s linear 2 both;
+}
+
+.container .letter-wrapper .letter-body .center.opened {
+  -webkit-transition: -webkit-transform 0.2s linear 0.4s;
+  transition: -webkit-transform 0.2s linear 0.4s;
+  transition: transform 0.2s linear 0.4s;
+  transition: transform 0.2s linear 0.4s, -webkit-transform 0.2s linear 0.4s;
+  -webkit-transform: translateY(0%) rotateX(180deg);
+          transform: translateY(0%) rotateX(180deg);
+}
+
+.container .letter-wrapper .letter-body .right-side {
+  background: url("https://i.ibb.co/GQnx18W/old-paper.jpg");
+  background-position: 100% 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  width: 50%;
+  position: absolute;
+  -webkit-clip-path: polygon(100% 0, 100% 100%, 50% 50%);
+          clip-path: polygon(100% 0, 100% 100%, 50% 50%);
+  z-index: 3;
+  -webkit-transition: -webkit-transform 0.2s linear 0.5s;
+  transition: -webkit-transform 0.2s linear 0.5s;
+  transition: transform 0.2s linear 0.5s;
+  transition: transform 0.2s linear 0.5s, -webkit-transform 0.2s linear 0.5s;
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.container .letter-wrapper .letter-body .right-side:before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  -webkit-animation: hintGreen 0.5s linear 2 both;
+          animation: hintGreen 0.5s linear 2 both;
+}
+
+.container .letter-wrapper .letter-body .right-side.opened {
+  -webkit-transition: -webkit-transform 0.2s linear 0.5s;
+  transition: -webkit-transform 0.2s linear 0.5s;
+  transition: transform 0.2s linear 0.5s;
+  transition: transform 0.2s linear 0.5s, -webkit-transform 0.2s linear 0.5s;
+  -webkit-transform: translateX(0%) rotateY(-180deg);
+          transform: translateX(0%) rotateY(-180deg);
+}
+
+@-webkit-keyframes hintRed {
+  0% {
+    background-color: rgba(255, 0, 0, 0);
+  }
+  50% {
+    background-color: red;
+  }
+  100% {
+    background-color: rgba(255, 0, 0, 0);
+  }
+}
+
+@keyframes hintRed {
+  0% {
+    background-color: rgba(255, 0, 0, 0);
+  }
+  50% {
+    background-color: red;
+  }
+  100% {
+    background-color: rgba(255, 0, 0, 0);
+  }
+}
+
+@-webkit-keyframes hintGreen {
+  0% {
+    background-color: rgba(0, 128, 0, 0);
+  }
+  50% {
+    background-color: rgba(0, 128, 0, 0.15);
+  }
+  100% {
+    background-color: rgba(0, 128, 0, 0);
+  }
+}
+
+@keyframes hintGreen {
+  0% {
+    background-color: rgba(0, 128, 0, 0);
+  }
+  50% {
+    background-color: rgba(0, 128, 0, 0.15);
+  }
+  100% {
+    background-color: rgba(0, 128, 0, 0);
+  }
+}
